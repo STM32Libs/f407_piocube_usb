@@ -1,0 +1,8 @@
+cubemx/Drivers
+cubemx/STM32F411CEUX_FLASH.ld
+cubemx/STM32F411CEUX_RAM.ld
+cubemx/Core/Startup
+cubemx/Core/Src/syscalls.c
+cubemx/Core/Src/sysmem.c
+cubemx/Core/Src/system_stm32f4xx.c
+cubemx_new
