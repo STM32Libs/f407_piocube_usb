@@ -190,6 +190,16 @@ void SysTick_Handler(void)
   /* USER CODE END SysTick_IRQn 1 */
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wimplicit-function-declaration"
+
+void OTG_FS_IRQHandler(void)
+{
+  UsbApp_HAL_PCD_IRQHandler();
+}
+
+#pragma GCC diagnostic pop
+
 /******************************************************************************/
 /* STM32F4xx Peripheral Interrupt Handlers                                    */
 /* Add here the Interrupt Handlers for the used peripherals.                  */

@@ -25,10 +25,10 @@
  extern "C" {
 #endif
 
+#define USE_AUDIO_DUMMY_MIC 1
+
 /* Includes ------------------------------------------------------------------*/
-#if USE_AUDIO_DUMMY_MIC
-/* no need to include user files */
-#else /* USE_AUDIO_DUMMY_MIC*/
+#ifndef USE_AUDIO_DUMMY_MIC
 #include "audio_user_devices.h"
 #endif /* USE_AUDIO_DUMMY_MIC */
 #include  "audio_node.h"

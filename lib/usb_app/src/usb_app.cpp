@@ -4,6 +4,7 @@
 #include "usbd_core.h"
 
 USBD_HandleTypeDef USBD_Device;
+PCD_HandleTypeDef hpcd;
 
 
 bool UsbApp::init()
@@ -13,4 +14,9 @@ bool UsbApp::init()
   USBD_Init(&USBD_Device, NULL, 0);
 
   return true;
+}
+
+void UsbApp_HAL_PCD_IRQHandler()
+{
+  HAL_PCD_IRQHandler(&hpcd);
 }

@@ -25,6 +25,8 @@
  extern "C" {
 #endif
 
+#define USE_AUDIO_SPEAKER_DUMMY 1
+
 /* Includes ------------------------------------------------------------------*/
 
 #if !USE_AUDIO_SPEAKER_DUMMY

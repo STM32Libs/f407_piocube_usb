@@ -25,9 +25,10 @@
             "-I ./STM32_USB_Device_Library/Class/AUDIO/Inc",
             "-I ./USB_Device/AUD_Streaming10/Inc",
             "-I ./USB_Device/Extension/Drivers/STM32F4xx_HAL_Driver",
-            "-I ./Streaming/Inc"
+            "-I ./Streaming/Inc",
+            "-D USE_USB_FS"
         ],
         "srcDir":".",
-        "srcFilter":"+<src/> +<STM32_USB_Device_Library/Core/Src>"
+        "srcFilter":"+<src/> +<STM32_USB_Device_Library/Core/Src> +<USB_Device/AUD_Streaming10/Src>"
     }
 }
