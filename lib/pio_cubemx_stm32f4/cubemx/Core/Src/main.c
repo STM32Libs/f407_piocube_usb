@@ -147,37 +147,8 @@ void SystemClock_Config(void)
   }
 }
 
-//unused here as done in 
+//MX_USB_OTG_FS_PCD_Init unused here as done in 
 //UsbApp::init -> USBD_Init -> USBD_LL_Init
-static void MX_USB_OTG_FS_PCD_Init(void)
-{
-
-  /* USER CODE BEGIN USB_OTG_FS_Init 0 */
-
-  /* USER CODE END USB_OTG_FS_Init 0 */
-
-  /* USER CODE BEGIN USB_OTG_FS_Init 1 */
-
-  /* USER CODE END USB_OTG_FS_Init 1 */
-  hpcd_USB_OTG_FS.Instance = USB_OTG_FS;
-  hpcd_USB_OTG_FS.Init.dev_endpoints = 4;//5 not 4
-  hpcd_USB_OTG_FS.Init.speed = PCD_SPEED_FULL;
-  hpcd_USB_OTG_FS.Init.dma_enable = DISABLE;
-  hpcd_USB_OTG_FS.Init.phy_itface = PCD_PHY_EMBEDDED;
-  hpcd_USB_OTG_FS.Init.Sof_enable = ENABLE;
-  hpcd_USB_OTG_FS.Init.low_power_enable = DISABLE;
-  hpcd_USB_OTG_FS.Init.lpm_enable = DISABLE;
-  hpcd_USB_OTG_FS.Init.vbus_sensing_enable = DISABLE;//ENABLE not DISABLE
-  hpcd_USB_OTG_FS.Init.use_dedicated_ep1 = DISABLE;
-  if (HAL_PCD_Init(&hpcd_USB_OTG_FS) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN USB_OTG_FS_Init 2 */
-
-  /* USER CODE END USB_OTG_FS_Init 2 */
-
-}
 
 /**
   * @brief GPIO Initialization Function
@@ -212,9 +183,22 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
+
 void SysTick_Handler(void) {
   HAL_IncTick();
 }
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wimplicit-function-declaration"
+
+void OTG_FS_IRQHandler(void)
+{
+  UsbApp_HAL_PCD_IRQHandler();
+}
+
+#pragma GCC diagnostic pop
+
+
 #ifdef  USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
@@ -231,5 +215,7 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
+
+
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

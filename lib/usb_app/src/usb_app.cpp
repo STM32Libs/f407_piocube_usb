@@ -24,12 +24,6 @@ bool UsbApp::init()
   return true;
 }
 
-//called from lib\pio_cubemx_stm32f4\cubemx\Core\Src\stm32f4xx_it.c
-void UsbApp_HAL_PCD_IRQHandler()
-{
-  HAL_PCD_IRQHandler(static_cast<PCD_HandleTypeDef*>(USBD_Device.pData));// == &hpcd
-}
-
 void USBD_error_handler(void)
 {
   while(1){
