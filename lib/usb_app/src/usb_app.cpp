@@ -2,6 +2,7 @@
 #include "stm32f4xx_hal.h"
 
 #include "usbd_core.h"
+#include "usbd_desc.h"
 
 USBD_HandleTypeDef USBD_Device;
 PCD_HandleTypeDef hpcd;
@@ -10,8 +11,7 @@ PCD_HandleTypeDef hpcd;
 bool UsbApp::init()
 {
 
-  //USBD_Init(&USBD_Device, &AUDIO_Desc, 0);
-  USBD_Init(&USBD_Device, NULL, 0);
+  USBD_Init(&USBD_Device, &AUDIO_Desc, 0);
 
   return true;
 }
