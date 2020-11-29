@@ -29,11 +29,11 @@
             "-D USE_USB_FS"
         ],
         "srcDir":".",
-        "srcFilter":["+<src/>",
-                     "+<STM32_USB_Device_Library/Core/Src>",
-                     "+<STM32_USB_Device_Library/Class/AUDIO_10/Src>",
-                     "+<USB_Device/AUD_Streaming10/Src>",
-                     "+<Streaming/Src>"
+        "srcFilter":[   "+<src/>",
+                        "+<STM32_USB_Device_Library/Class/AUDIO_10/Src>",
+                        "+<STM32_USB_Device_Library/Core/Src>",
+                        "+<Streaming/Src>",
+                        "+<USB_Device/AUD_Streaming10/Src>"
                     ]
     }
 }

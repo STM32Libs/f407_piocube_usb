@@ -4,12 +4,12 @@
 
 LedApp led;
 
-UsbApp rec;
+UsbApp usb;
 
 void setup()
 {
   led.init(GPIOA,GPIO_PIN_1);
-  rec.init();
+  usb.init();
 }
 
 void loop()
