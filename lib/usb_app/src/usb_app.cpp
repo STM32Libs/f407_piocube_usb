@@ -6,6 +6,7 @@
 #include "usbd_audio.h"
 
 USBD_HandleTypeDef USBD_Device;//USBD_Device.pData <= (PCD_HandleTypeDef *hpcd)
+extern USBD_AUDIO_InterfaceCallbacksfTypeDef audio_class_interface;//from usbd_audio_if.c
 
 void HAL_PCD_MspInit_FS_no_cb();
 
@@ -17,9 +18,14 @@ bool UsbApp::init()
 
   USBD_RegisterClass(&USBD_Device, USBD_AUDIO_CLASS);//USBD_AUDIO_CLASS from usbd_audio
 
+  USBD_AUDIO_RegisterInterface(&USBD_Device, &audio_class_interface);
+  
+  USBD_Start(&USBD_Device);
+
   return true;
 }
 
+//called from lib\pio_cubemx_stm32f4\cubemx\Core\Src\stm32f4xx_it.c
 void UsbApp_HAL_PCD_IRQHandler()
 {
   HAL_PCD_IRQHandler(static_cast<PCD_HandleTypeDef*>(USBD_Device.pData));// == &hpcd
